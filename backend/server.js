@@ -11,6 +11,7 @@ import userRoutes from './routes/userRoutes.js'
 import orderRoutes from './routes/orderRoutes.js'
 import uploadRoutes from './routes/uploadRoutes.js'
 import cors from "cors"
+import corsOptions from './config/corsOptions.js'
 
 dotenv.config()
 
@@ -33,7 +34,7 @@ app.get('/api/config/paypal', (req, res) =>
   res.send(process.env.PAYPAL_CLIENT_ID)
 )
 
-app.use(cors());
+app.use(cors(corsOptions))
 app.use((req, res, next) => {
   console.log(req.path, req.method)
   next()
