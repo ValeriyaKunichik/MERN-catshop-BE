@@ -34,11 +34,10 @@ app.get('/api/config/paypal', (req, res) =>
   res.send(process.env.PAYPAL_CLIENT_ID)
 )
 
-//app.use(cors(corsOptions))
+app.use(cors(corsOptions))
 
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*')
-  console.log(req.path, req.method)
   next()
 })
 
