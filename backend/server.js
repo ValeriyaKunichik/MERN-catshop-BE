@@ -10,6 +10,7 @@ import productRoutes from './routes/productRoutes.js'
 import userRoutes from './routes/userRoutes.js'
 import orderRoutes from './routes/orderRoutes.js'
 import uploadRoutes from './routes/uploadRoutes.js'
+import cors from "cors"
 
 dotenv.config()
 
@@ -32,6 +33,13 @@ app.get('/api/config/paypal', (req, res) =>
   res.send(process.env.PAYPAL_CLIENT_ID)
 )
 
+app.use(cors());
+app.use((req, res, next) => {
+  console.log(req.path, req.method)
+  next()
+})
+
+/*
 const __dirname = path.resolve()
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')))
 
@@ -46,7 +54,7 @@ if (process.env.NODE_ENV === 'production') {
     res.send('API is running....')
   })
 }
-
+*/
 app.use(notFound)
 app.use(errorHandler)
 
