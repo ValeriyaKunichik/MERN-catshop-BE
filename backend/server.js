@@ -35,7 +35,7 @@ app.get('/api/config/paypal', (req, res) =>
 )
   
 const corsOpts = {
-    origin: '*',
+    origin: 'https://happycatshop.onrender.com/',
     credentials: true,
     methods: ['GET','POST','HEAD','PUT','PATCH','DELETE'],
     allowedHeaders: ['Content-Type'],
