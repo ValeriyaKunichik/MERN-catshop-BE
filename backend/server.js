@@ -43,11 +43,6 @@ const corsOpts = {
 };
 app.use(cors(corsOpts));
 
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*')
-  next()
-})
-
 
 /*
 const __dirname = path.resolve()
