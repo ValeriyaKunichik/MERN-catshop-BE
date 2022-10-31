@@ -11,7 +11,7 @@ import userRoutes from './routes/userRoutes.js'
 import orderRoutes from './routes/orderRoutes.js'
 import uploadRoutes from './routes/uploadRoutes.js'
 import cors from "cors"
-import corsOptions from './config/corsOptions.js'
+/*import corsOptions from './config/corsOptions.js'*/
 
 dotenv.config()
 
@@ -34,14 +34,18 @@ app.get('/api/config/paypal', (req, res) =>
   res.send(process.env.PAYPAL_CLIENT_ID)
 )
   
-const corsOpts = {
-    origin: 'https://happycatshop.onrender.com/',
-    credentials: true,
-    methods: ['GET','POST','HEAD','PUT','PATCH','DELETE'],
-    allowedHeaders: ['Content-Type'],
-    exposedHeaders: ['Content-Type']
-};
-app.use(cors(corsOpts));
+const whitelist = ["https://happycatshop.onrender.com"]
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (!origin || whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error("Not allowed by CORS"))
+    }
+  },
+  credentials: true,
+}
+app.use(cors(corsOptions))
 
 
 /*
