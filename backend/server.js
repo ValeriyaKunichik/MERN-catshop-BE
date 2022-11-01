@@ -35,10 +35,11 @@ app.get('/api/config/paypal', (req, res) =>
 )
 
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Origin', "https://happycatshop.onrender.com");
   next();
 });
-
+app.use(cors())
+/*
 const whitelist = ["https://happycatshop.onrender.com"]
 const corsOptions = {
   origin: function (origin, callback) {
@@ -50,7 +51,7 @@ const corsOptions = {
   },
   credentials: true,
 }
-app.use(cors(corsOptions))
+app.use(cors(corsOptions))*/
 
 /*
 const __dirname = path.resolve()
