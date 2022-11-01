@@ -33,11 +33,8 @@ app.use('/api/upload', uploadRoutes)
 app.get('/api/config/paypal', (req, res) =>
   res.send(process.env.PAYPAL_CLIENT_ID)
 )
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "https://happycatshop.onrender.com");
-  next()
-})  
-/*const whitelist = ["https://happycatshop.onrender.com"]
+
+const whitelist = ["https://happycatshop.onrender.com"]
 const corsOptions = {
   origin: function (origin, callback) {
     if (!origin || whitelist.indexOf(origin) !== -1) {
@@ -49,8 +46,7 @@ const corsOptions = {
   credentials: true,
 }
 app.use(cors(corsOptions))
-*/
-app.use(cors())
+
 /*
 const __dirname = path.resolve()
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')))
