@@ -34,7 +34,7 @@ app.get('/api/config/paypal', (req, res) =>
   res.send(process.env.PAYPAL_CLIENT_ID)
 )
 app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Origin", "https://happycatshop.onrender.com");
   next()
 })  
 const whitelist = ["https://happycatshop.onrender.com"]
