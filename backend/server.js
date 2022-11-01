@@ -33,7 +33,10 @@ app.use('/api/upload', uploadRoutes)
 app.get('/api/config/paypal', (req, res) =>
   res.send(process.env.PAYPAL_CLIENT_ID)
 )
-  
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  next()
+})  
 const whitelist = ["https://happycatshop.onrender.com"]
 const corsOptions = {
   origin: function (origin, callback) {
